@@ -35,17 +35,29 @@ public class CompanyApp {
             } else if(opt == 2){
                 menuOpt2(company);
             } else if (opt == 3) {
-                System.out.println("Introduce el nombre del departamento:");
-                String nameDepart = scanner.nextLine();
-                System.out.println("Introduce el NIF del Empleado:");
-                String nifEmployee = scanner.nextLine();
-                company.findEmployee(nameDepart,nifEmployee);
+                menuOpt3(company);
             } else if (opt == 4) {
                 System.out.println("Adios");
             } else {
                 System.out.println("Opcion erronea seleccione una correcta");
             }
         } while (opt != 4);
+    }
+
+    private void menuOpt3(Company company) {
+        System.out.println("Introduce el nombre del departamento:");
+        String nameDepart = scanner.nextLine();
+        System.out.println("Introduce el NIF del Empleado:");
+        String nifEmployee = scanner.nextLine();
+        if(company.hasDepartment(nameDepart)){
+            if (company.hasEmployee(nameDepart, nifEmployee)){
+                company.findEmployee(nameDepart,nifEmployee);
+            } else {
+                System.out.println("Empleado no encontrado");
+            }
+        } else {
+            System.out.println("El dempartamento no exite");
+        }
     }
 
     private void menuOpt2(Company company) {

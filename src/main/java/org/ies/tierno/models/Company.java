@@ -45,6 +45,16 @@ public class Company {
             }
         }
     }
+    public boolean hasEmployee(String nameDepart, String nif){
+        for (Department department: departments){
+            if(department.getName().equals(nameDepart)){
+                if(department.hasNif(nif)){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
 
     public String getName() {
         return name;
